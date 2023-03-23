@@ -8,21 +8,24 @@ from rich.markdown import Markdown
 
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-SYSTEM_PROMPT_DEFAULT = {"role": "system", "content": "You are a helpful assistant. Answer concisely when possible."}
+SYSTEM_PROMPT_DEFAULT = {
+    "role": "system",
+    "content": "You are a helpful assistant. Answer concisely when possible.",
+}
 RESET_QUERY = "!RESET"
 QUIT_QUERY = "!QUIT"
 
 
 if __name__ == "__main__":
     console = Console()
-    
+
     prompt = []
     system_prompt = input(
         "System prompt (e.g., 'You are a helpful assistant. Answer concisely when possible.'):\n"
-        ).strip()
+    ).strip()
     if system_prompt:
         prompt.append({"role": "system", "content": system_prompt.strip()})
-    
+
     while True:
         user_query = input("User:\n").strip()
         if user_query == RESET_QUERY:
